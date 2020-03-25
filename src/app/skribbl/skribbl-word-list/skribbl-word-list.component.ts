@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SkribblService } from '../skribbl.service'
 import { FileService } from '../../common/file.service';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -59,19 +60,18 @@ export class SkribblWordListComponent implements OnInit {
   getWord() {
     this.skribblService.getWord().subscribe(data => {
       this.copyToClipboard(data);
+      var string: string|any;
+      string = data;
+      saveAs(string, "myfile.json")
     })
   }
 
   download() {
-    console.log('try to download...');
-    this.fileService.downloadFile().subscribe(response => {
-			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
-			//const url= window.URL.createObjectURL(blob);
-			//window.open(url);
-			window.location.href = response.url;
-			//fileSaver.saveAs(blob, 'employees.json');
-		}), error => console.log('Error downloading the file'),
-                 () => console.info('File downloaded successfully');
+    this.skribblService.getWord().subscribe(data => {
+      var string: string|any;
+      string = data;
+      saveAs(string, "skribbl-list.txt")
+    })
   }
 
   // login(): void {

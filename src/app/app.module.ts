@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { UnderConstructionComponent } from './common/under-construction/under-construction.component';
 import { SkribblWordListComponent } from './skribbl/skribbl-word-list/skribbl-word-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

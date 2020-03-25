@@ -1,0 +1,17 @@
+
+<div class="skribbl">
+    <h3>Total Word Count : {{wordCount}}</h3>
+    <form class="skribbl-form" [formGroup]="newWordForm">
+        <mat-form-field class="skribbl-full-width">
+        <mat-label>New word</mat-label>
+        <input matInput placeholder="Ex. Amputee sex" formControlName="newWord">
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="addWord()">Add</button>
+        <button mat-flat-button color="secondary" (click)="getWord()">Copy full list to clipboard</button>
+    
+        <!-- <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field> -->
+  </form>
+</div>

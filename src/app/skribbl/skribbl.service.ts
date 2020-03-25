@@ -19,7 +19,9 @@ export class SkribblService {
     };
     return Observable.create(observer => {
       this.http.post<any>('api/skribbl/add-word', {word}).subscribe(data => {
-        console.log(data)
+        if (data === 'error, word already in list') {
+          console.log('error');
+        }
       });
     });
     // return this.http.post('api/skribbl/add-word');

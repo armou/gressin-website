@@ -32,11 +32,18 @@ async function addWord(req, res) {
     // csv = csv.join('\r\n')
 
     // console.log(csv)
-    fs.appendFile('assets/word-list.txt', ',' + req.body.word, (err) => {
-        if (err) throw err;
-            console.log('New word added!');
-    });
-    res.json('success');
+    console.log('checking duplicates');
+    // console.log(checkDuplicate(req.body.word));
+    if (checkDuplicate(req.body.word) == true) {
+        fs.appendFile('assets/word-list.txt', ',' + req.body.word, (err) => {
+            if (err) throw err;
+                console.log('New word added!');
+        });
+        res.json('success');
+    } else {
+        res.json('error, word already in list')
+    }
+
 //   let user = await userCtrl.insert(req.body);
 //   res.json(user);
 }
@@ -49,6 +56,13 @@ async function getWord(req, res) {
     var content = fs.readFileSync('assets/word-list.txt', 'utf-8');
     console.log('attempting to read file');
     console.log(content);
-    let toto = {'tutu': 2};
     res.json(content);
+}
+
+function checkDuplicate(word) {
+    var content = fs.readFileSync('assets/word-list.txt', 'utf-8') + ',' + word;
+    console.log(content);
+    var duplicates = content.split(',');
+    uniq = [...new Set(duplicates)];
+    return uniq.length == duplicates.length;
 }

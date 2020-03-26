@@ -19,6 +19,9 @@
         <mat-error *ngIf="newWord.errors.forbiddenName">
             Word cannot be Armel. (Fuck you, don't draw me).
         </mat-error>
+        <mat-error *ngIf="newWord.errors.forbiddenValue">
+            "REGARDEZ MOI JE SUIS MALIN JE MET DES MOTS AVEC QUE DES ESPACES"
+        </mat-error>
 
     </div>
         <button mat-flat-button color="primary" (click)="addWord()" (keyup.enter)="addWord()" class="button-skribbl-form">Add</button>

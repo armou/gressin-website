@@ -30,8 +30,15 @@ export class SkribblWordListComponent implements OnInit {
     }: null;
   }
 
+  trimmingWordValidator(control: FormControl): ValidationErrors {
+    let password = control.root.get('newWord');
+    return control.value.trim().length < 1 ? {
+      forbiddenValue: true
+    }: null;
+  }
+
   newWordForm = new FormGroup({
-    newWord: new FormControl('', [Validators.required, Validators.maxLength(30), this.forbiddenNameValidator])
+    newWord: new FormControl('', [Validators.required, Validators.maxLength(30), this.forbiddenNameValidator, this.trimmingWordValidator])
   })
 
   getWordCount() {

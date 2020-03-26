@@ -21,7 +21,7 @@
         </mat-error>
 
     </div>
-        <button mat-flat-button color="primary" (click)="addWord()" class="button-skribbl-form">Add</button>
+        <button mat-flat-button color="primary" (click)="addWord()" (keyup.enter)="addWord()" class="button-skribbl-form">Add</button>
         <button mat-flat-button color="accent" (click)="download()" class="button-skribbl-form">Download word list as file</button>
         <button mat-flat-button color="secondary" (click)="getWord()" class="button-skribbl-form">Copy full list to clipboard</button>
     
@@ -31,4 +31,13 @@
         <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
         </mat-form-field> -->
   </form>
+
+  
+  <form (submit)="deleteWord()" class="skribbl-form">
+    <mat-form-field class="skribbl-full-width">
+        <mat-label>Delete word</mat-label>
+        <input matInput [(ngModel)]="wordToDelete" name="deleteWord">
+    </mat-form-field>
+    <button mat-flat-button color="warn">Delete</button>
+ </form>
 </div>

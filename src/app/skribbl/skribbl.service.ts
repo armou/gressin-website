@@ -13,25 +13,13 @@ export class SkribblService {
               private toastr: ToastrService) { }
 
   addWord(word) : Observable <any> {
-    let toto_2 = {
-      'wordList': [{
-        '1': 'word',
-        '2': 'word-2',
-        '3': 'word-3'
-      }]
-    };
     return Observable.create(observer => {
         this.http.post<any>('api/skribbl/add-word', {word}).subscribe(data => {
-          console.log('data');
-          // console.log(data);
-          if (data === 'error, word already in list') {
-            // console.log('error');
-          }
+          this.toastr.success(word + '  added successfully. Gressin loves you <3');
           observer.next();
           observer.complete();
         }, error => {
-          this.toastr.error('toto a la plage');
-          console.log('toto a la plage');
+          this.toastr.error(word + 'already in the list :(');
           console.log(error);
           throwError(error);
         });
@@ -42,6 +30,17 @@ export class SkribblService {
 
   getWord() {
     return this.http.get('api/skribbl/get-word')
+  }
+
+  deleteWord(word) {
+    this.http.post('api/skribbl/delete-word', {word}).subscribe(data => {
+      this.toastr.success(word + '  deleted successfully');
+      console.log('delete word');
+      console.log(data);
+    }, error => {
+      this.toastr.error('Error while deleting a word. Attends un peu connard');
+      console.log(error)
+    })
   }
 
 }

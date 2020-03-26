@@ -84,4 +84,12 @@ export class SkribblWordListComponent implements OnInit {
       saveAs(blob, "skribbl-gressin-word-list.txt")
     })
   }
+
+
+  wordToDelete: string;
+
+  deleteWord() {
+    this.skribblService.deleteWord(this.wordToDelete);
+    this.getWordCount();
+  }
 }

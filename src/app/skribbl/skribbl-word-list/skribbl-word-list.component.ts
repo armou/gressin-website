@@ -25,8 +25,6 @@ export class SkribblWordListComponent implements OnInit {
 
   forbiddenNameValidator(control: FormControl): ValidationErrors {
     let password = control.root.get('newWord');
-    console.log('validator');
-    console.log(control.value);
     return password && control.value.toLowerCase() === 'armel' ? {
       forbiddenName: true
     }: null;

@@ -19,7 +19,7 @@ export class SkribblService {
           observer.next();
           observer.complete();
         }, error => {
-          this.toastr.error(word + 'already in the list :(');
+          this.toastr.error(word + '  already in the list :(');
           console.log(error);
           throwError(error);
         });
@@ -38,7 +38,7 @@ export class SkribblService {
       console.log('delete word');
       console.log(data);
     }, error => {
-      this.toastr.error('Error while deleting a word. Attends un peu connard');
+      this.toastr.error('word' + word +' already deleted');
       console.log(error)
     })
   }

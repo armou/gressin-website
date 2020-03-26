@@ -43,12 +43,20 @@ async function getWord(req, res) {
 }
 
 async function deleteWord(req, res) {
-    var input = req.body.word + ',';
+    var input = req.body.word;
     var content = fs.readFileSync('assets/word-list.txt', 'utf-8');
-    var newValue = content.replace(new RegExp(input), '');
-    fs.writeFileSync('assets/word-list.txt', newValue, 'utf-8');
-    console.log('DEELEEEEEEETE');
-    res.json('success');
+    console.log(content.split(',').reverse().indexOf(input));
+    if (content.split(',').reverse().indexOf(input) >= 0) {
+        if (content.split(',').reverse().indexOf(input) === 0) {
+            input += ',';
+        }
+        var newValue = content.replace(new RegExp(input + ','), '');
+        fs.writeFileSync('assets/word-list.txt', newValue, 'utf-8');
+        console.log('DEELEEEEEEETE');
+        res.json('success');
+    }  else {
+        res.status(400).send({message: 'word not in list'});        
+    }
 }
 
 function checkDuplicate(word) {

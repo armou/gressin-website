@@ -25,7 +25,7 @@ export class SkribblWordListComponent implements OnInit {
 
   forbiddenNameValidator(control: FormControl): ValidationErrors {
     let password = control.root.get('newWord');
-    return password && control.value.toLowerCase() === 'armel' ? {
+    return password && control.value.toLowerCase().trim() === 'armel' ? {
       forbiddenName: true
     }: null;
   }
@@ -59,8 +59,9 @@ export class SkribblWordListComponent implements OnInit {
   addWord() {
 
     if(!this.newWordForm.valid) return;
+    console.log(this.newWordForm.getRawValue().newWord.toLowerCase());
 
-    this.skribblService.addWord(this.newWordForm.getRawValue().newWord).subscribe(data => {
+    this.skribblService.addWord(this.newWordForm.getRawValue().newWord.trim()).subscribe(data => {
       // console.log(data);
       // console.log('request finished')
     }, error => {

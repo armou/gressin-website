@@ -68,6 +68,7 @@ export class SkribblWordListComponent implements OnInit {
       console.log(error);
     });
     this.getWordCount();
+    this.newWordForm.reset();
   }
 
   getWord() {

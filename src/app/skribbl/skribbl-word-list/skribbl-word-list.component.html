@@ -4,11 +4,28 @@
     <form class="skribbl-form" [formGroup]="newWordForm">
         <mat-form-field class="skribbl-full-width">
         <mat-label>New word</mat-label>
-        <input matInput placeholder="Ex. Amputee sex" formControlName="newWord">
+            <input matInput placeholder="Ex. Amputee sex" formControlName="newWord">
+
         </mat-form-field>
-        <button mat-flat-button color="primary" (click)="addWord()">Add</button>
-        <button mat-flat-button color="secondary" (click)="getWord()">Copy full list to clipboard</button>
+        <div *ngIf="newWord.invalid && (newWord.dirty || newWord.touched)"
+        class="alert alert-danger">
+
+        <mat-error *ngIf="newWord.hasError('required')">
+            Word cannot be empty.
+        </mat-error>
+        <mat-error *ngIf="newWord.hasError('maxlength')">
+            Word must be 30 characters maximum.
+        </mat-error>
+        <mat-error *ngIf="newWord.errors.forbiddenName">
+            Word cannot be Armel. (Fuck you, don't draw me).
+        </mat-error>
+
+    </div>
+        <button mat-flat-button color="primary" (click)="addWord()" class="button-skribbl-form">Add</button>
+        <button mat-flat-button color="accent" (click)="download()" class="button-skribbl-form">Download word-list as file</button>
+        <button mat-flat-button color="secondary" (click)="getWord()" class="button-skribbl-form">Copy full list to clipboard</button>
     
+        <div class="gif"></div>
         <!-- <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
         <textarea matInput placeholder="Ex. It makes me feel..."></textarea>

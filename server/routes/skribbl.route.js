@@ -34,8 +34,8 @@ async function addWord(req, res) {
     // console.log(csv)
     console.log('checking duplicates');
     // console.log(checkDuplicate(req.body.word));
-    if (checkDuplicate(req.body.word) == true) {
-        fs.appendFile('assets/word-list.txt', ',' + req.body.word, (err) => {
+    if (checkDuplicate(req.body.word.toLowerCase()) == true) {
+        fs.appendFile('assets/word-list.txt', ',' + req.body.word.toLowerCase(), (err) => {
             if (err) throw err;
                 console.log('New word added!');
         });

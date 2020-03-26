@@ -21,8 +21,19 @@ export class SkribblWordListComponent implements OnInit {
     this.getWordCount();
   }
 
+  get newWord() { return this.newWordForm.get('newWord'); }
+
+  forbiddenNameValidator(control: FormControl): ValidationErrors {
+    let password = control.root.get('newWord');
+    console.log('validator');
+    console.log(control.value);
+    return password && control.value.toLowerCase() === 'armel' ? {
+      forbiddenName: true
+    }: null;
+  }
+
   newWordForm = new FormGroup({
-    newWord: new FormControl('', [Validators.required, Validators.maxLength(30)])
+    newWord: new FormControl('', [Validators.required, Validators.maxLength(30), this.forbiddenNameValidator])
   })
 
   getWordCount() {
@@ -60,9 +71,6 @@ export class SkribblWordListComponent implements OnInit {
   getWord() {
     this.skribblService.getWord().subscribe(data => {
       this.copyToClipboard(data);
-      var string: string|any;
-      string = data;
-      saveAs(string, "myfile.json")
     })
   }
 
@@ -70,14 +78,8 @@ export class SkribblWordListComponent implements OnInit {
     this.skribblService.getWord().subscribe(data => {
       var string: string|any;
       string = data;
-      saveAs(string, "skribbl-list.txt")
+      var blob = new Blob([string], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, "skribbl-gressin-word-list.txt")
     })
   }
-
-  // login(): void {
-  //   this.authService.login(this.email, this.password)
-  //   .subscribe(data => {
-  //     this.router.navigate(['']);
-  //   })
-  // }
 }

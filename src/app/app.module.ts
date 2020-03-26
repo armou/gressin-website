@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UnderConstructionComponent } from './common/under-construction/under-construction.component';
 import { SkribblWordListComponent } from './skribbl/skribbl-word-list/skribbl-word-list.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { SkribblWordListComponent } from './skribbl/skribbl-word-list/skribbl-wo
     AuthModule,
     AdminModule,
     AppRoutingModule,
+    ToastrModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -61,7 +61,11 @@ export class SkribblWordListComponent implements OnInit {
     if(!this.newWordForm.valid) return;
 
     this.skribblService.addWord(this.newWordForm.getRawValue().newWord).subscribe(data => {
-      console.log(data);
+      // console.log(data);
+      // console.log('request finished')
+    }, error => {
+      console.log('allo maman ?')
+      console.log(error);
     });
     this.getWordCount();
   }

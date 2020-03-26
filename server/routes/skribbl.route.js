@@ -41,7 +41,7 @@ async function addWord(req, res) {
         });
         res.json('success');
     } else {
-        res.json('error, word already in list')
+        res.status(400).send({message: 'word already in list'});
     }
 
 //   let user = await userCtrl.insert(req.body);

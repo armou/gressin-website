@@ -32,7 +32,7 @@ export class SkribblWordListComponent implements OnInit {
 
   trimmingWordValidator(control: FormControl): ValidationErrors {
     let password = control.root.get('newWord');
-    return control.value.trim().length < 1 ? {
+    return control.value.length > 1 && control.value.trim().length < 1 ? {
       forbiddenValue: true
     }: null;
   }

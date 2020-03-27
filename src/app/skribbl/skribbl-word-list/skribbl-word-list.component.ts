@@ -16,23 +16,25 @@ export class SkribblWordListComponent implements OnInit {
               private fileService: FileService) { }
 
   wordCount: number;
+  gifURL: any;
 
   ngOnInit() {
     this.getWordCount();
+    this.getGif();
   }
 
   get newWord() { return this.newWordForm.get('newWord'); }
 
   forbiddenNameValidator(control: FormControl): ValidationErrors {
     let password = control.root.get('newWord');
-    return password && control.value.toLowerCase().trim() === 'armel' ? {
+    return password && control.value && control.value.toLowerCase().trim() === 'armel' ? {
       forbiddenName: true
     }: null;
   }
 
   trimmingWordValidator(control: FormControl): ValidationErrors {
     let password = control.root.get('newWord');
-    return control.value.length > 1 && control.value.trim().length < 1 ? {
+    return control.value && control.value.length > 1 && control.value.trim().length < 1 ? {
       forbiddenValue: true
     }: null;
   }
@@ -76,7 +78,14 @@ export class SkribblWordListComponent implements OnInit {
       console.log(error);
     });
     this.getWordCount();
+    this.getGif();
     this.newWordForm.reset();
+  }
+
+  getGif() {
+    this.skribblService.getGif().subscribe(data => {
+        this.gifURL = data;
+    });
   }
 
   getWord() {
@@ -100,5 +109,6 @@ export class SkribblWordListComponent implements OnInit {
   deleteWord() {
     this.skribblService.deleteWord(this.wordToDelete);
     this.getWordCount();
+    this.wordToDelete = '';
   }
 }

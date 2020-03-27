@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const asyncHandler = require('express-async-handler');
 const fs = require('fs');
+const https = require('https');
 
 
 const router = express.Router();
@@ -13,6 +14,7 @@ router.route('/').post(asyncHandler(insert));
 router.post('/add-word', asyncHandler(addWord));
 router.post('/delete-word', asyncHandler(deleteWord));
 router.get('/get-word', asyncHandler(getWord));
+router.get('/get-gif', asyncHandler(getGif));
 
 
 async function insert(req, res) {
@@ -35,15 +37,58 @@ async function addWord(req, res) {
 }
 
 async function getWord(req, res) {
-    var content;
     var content = fs.readFileSync('assets/word-list.txt', 'utf-8');
     console.log('attempting to read file');
     console.log(content);
     res.json(content);
 }
 
+async function getGif(req, res) {
+    var ret;
+    getGifUrl(function(ret) {
+        res.json(ret)
+    });
+}
+
+function getGifUrl(callback) {
+    api_key = process.env['GIPHY_API_KEY'];
+    const giphy = {
+		baseURL: "https://api.giphy.com/v1/gifs/",
+		apiKey: api_key,
+		tag: "fail",
+		type: "random",
+		rating: "r"
+    };
+    let giphyURL = encodeURI(
+		giphy.baseURL +
+			giphy.type +
+			"?api_key=" +
+			giphy.apiKey +
+			"&tag=" +
+			giphy.tag +
+			"&rating=" +
+			giphy.rating
+    );
+    console.log(giphyURL);
+    var ret;
+    var makerequest = https.get(giphyURL, (res) => {
+        console.log('https get request');
+        var final = '';
+        res.on('data',(data) => {
+            final += data;
+        });
+
+        res.on('end', () => {
+            final = JSON.parse(final);
+            ret = final.data.image_url
+            callback(ret);
+        });
+
+    })
+}
+
 async function deleteWord(req, res) {
-    var input = req.body.word;
+    var input = req.body.word.toLowerCase();
     var content = fs.readFileSync('assets/word-list.txt', 'utf-8');
     console.log(content.split(',').reverse().indexOf(input));
     if (content.split(',').reverse().indexOf(input) >= 0) {

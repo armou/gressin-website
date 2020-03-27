@@ -38,9 +38,13 @@ export class SkribblService {
       console.log('delete word');
       console.log(data);
     }, error => {
-      this.toastr.error('word' + word +' already deleted');
+      this.toastr.error('word ' + word +' not found');
       console.log(error)
     })
+  }
+
+  getGif() {
+    return this.http.get('api/skribbl/get-gif');
   }
 
 }

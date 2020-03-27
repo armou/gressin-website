@@ -92,10 +92,14 @@ async function deleteWord(req, res) {
     var content = fs.readFileSync('assets/word-list.txt', 'utf-8');
     console.log(content.split(',').reverse().indexOf(input));
     if (content.split(',').reverse().indexOf(input) >= 0) {
-        if (content.split(',').reverse().indexOf(input) === 0) {
+        if (content.split(',').reverse().indexOf(input) !== 0) {
             input += ',';
+        } else {
+            input = ',' + input;
         }
-        var newValue = content.replace(new RegExp(input + ','), '');
+        console.log(input);
+        var newValue = content.replace(new RegExp(input), '');
+        console.log(newValue);
         fs.writeFileSync('assets/word-list.txt', newValue, 'utf-8');
         console.log('DEELEEEEEEETE');
         res.json('success');

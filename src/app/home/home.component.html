@@ -1,9 +1,10 @@
 
 <div  class="welcome-gressin">
   <img src="../../assets/gressin-logo-no-BG.png" class="responsive">
-  <div  class="slide-down" (click)="toggle(target)">
+  <div [@openClose]="isOpen ? 'open' : 'closed'" class="responsive" (click)="toggle(target)">
     <!-- <a href="#nav"> -->
-      <fa-icon @myInsertRemoveTrigger [icon]="faChevronDown" size="6x" class="icon-down" ></fa-icon>
+      <!-- <img src="../../assets/gressin-img.png" class="gress-responsive"> -->
+      <fa-icon [icon]="faChevronDown" size="6x" class="icon-down" ></fa-icon>
     <!-- </a> -->
   </div>
   <div @mySlideDownTrigger *ngIf="isShown" class="grid-container" >
@@ -19,7 +20,7 @@
       <div class="profile-title">
         SOMBRE GRESSIN
       </div>
-      <p class="profile-desc">Le pilier fondqteur des Gressins. Sans lui la Gressinerie serait éteinte depuis bien longtemps. Maître du Discord, il introduit également le premier animal gressin. Un Gressin Grand et Fort qui utilise les forces de l'ombre pour semer la terreur chez les ennemis de la Gressinerie !</p>
+      <p class="profile-desc">Le pilier fondateur des Gressins. Sans lui la Gressinerie serait éteinte depuis bien longtemps. Maître du Discord, il introduit également le premier animal gressin. Un Gressin Grand et Fort qui utilise les forces de l'ombre pour semer la terreur chez les ennemis de la Gressinerie !</p>
     </div>
     <div class="grid-item">
       <img class="img-profile" src="../../assets/el_gressini.jpg">

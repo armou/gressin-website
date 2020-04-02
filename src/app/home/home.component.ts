@@ -31,8 +31,28 @@ import {
             animate('800ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
           ])
         ])
+      ]),
+      transition(':leave', [
+        query('.grid-item', [
+          style({opacity: 1}),
+          stagger(-30, [
+            animate('800ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 0, transform: 'none' }))
+          ])
+        ])
       ])
     ]),
+    trigger('openClose', [
+      state('open',
+        style({})),
+      state('closed', 
+        style({transform: 'translateY(110vh) rotate(180deg)', opacity: 1})),
+      transition('closed => open', [
+        animate(1000)
+      ]),
+      transition('open => closed', [
+        animate(1000, style({ transform: 'translateY(110vh) rotate(180deg)' }))
+      ])
+    ])
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -40,6 +60,7 @@ import {
 export class HomeComponent implements OnInit {
   faChevronDown = faChevronDown;
   isShown = false;
+  isOpen = true;
 
   constructor() { }
 
@@ -54,7 +75,7 @@ export class HomeComponent implements OnInit {
     console.log($element);
     $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     this.isShown = !this.isShown;
-
+    this.isOpen = !this.isOpen;
   }
 
 }

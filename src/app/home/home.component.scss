@@ -7,6 +7,12 @@
     .responsive {
         width: 100%;
         height: auto;
+        position: relative;
+    }
+    .gress-responsive {
+        margin-left: 10vmin;
+        margin-right: 10vmin;
+        display: block;
     }
     .grid-container {
         display: grid;
@@ -46,27 +52,4 @@
         font-weight: 700;
         padding-top: 10px;
     }
-    .slide-down {
-        // transition: all .5s ease-in-out;
-        // background: #fff;
-        // overflow: hidden;
-      
-        // transition: all .5s ease-in-out;
-        // display: none;
-        // line-height: 0;
-        // padding: 0 1em;
-        // color: transparent;
-
-        transition: 2s ease-in-out;
-
-    }
-    .slide-down:hover {
-        // transform: translate(0, 1000px);
-        // display: block;
-        // line-height: 1.5;
-        // padding-top: 1em;
-        // padding-bottom: 1em;
-        // color: black;
-    }
-
   }

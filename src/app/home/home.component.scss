@@ -8,11 +8,11 @@
         width: 100%;
         height: auto;
         position: relative;
+        text-align: center;
+        display: block;
     }
     .gress-responsive {
-        margin-left: 10vmin;
-        margin-right: 10vmin;
-        display: block;
+        width: 60vw;
     }
     .grid-container {
         display: grid;

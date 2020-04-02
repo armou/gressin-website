@@ -1,0 +1,72 @@
+
+
+.welcome-gressin {
+
+    padding-top: 50px;
+    
+    .responsive {
+        width: 100%;
+        height: auto;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        // grid-template-columns: repeat(auto-fill, minmax(250px, 3fr));
+        // background-color: #2196F3;
+        padding: 10px;
+      }
+    .grid-item {
+        background-color: #ececcc;
+        // border: 1px solid rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    .img-profile {
+        float: left;
+        width: 120px;
+        border-radius: 10px;
+        margin: 20px 10px 10px 10px;
+    }
+    .profile-desc {
+        font-style: italic;
+        margin: 10px;
+    }
+    .grid-title {
+        font-size: 30px;
+        text-align: center;
+    }
+    .icon-down {
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+    }
+    .profile-title {
+        text-align: center;
+        font-weight: 700;
+        padding-top: 10px;
+    }
+    .slide-down {
+        // transition: all .5s ease-in-out;
+        // background: #fff;
+        // overflow: hidden;
+      
+        // transition: all .5s ease-in-out;
+        // display: none;
+        // line-height: 0;
+        // padding: 0 1em;
+        // color: transparent;
+
+        transition: 2s ease-in-out;
+
+    }
+    .slide-down:hover {
+        // transform: translate(0, 1000px);
+        // display: block;
+        // line-height: 1.5;
+        // padding-top: 1em;
+        // padding-bottom: 1em;
+        // color: black;
+    }
+
+  }

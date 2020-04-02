@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { UnderConstructionComponent } from './common/under-construction/under-construction.component';
 import { SkribblWordListComponent } from './skribbl/skribbl-word-list/skribbl-word-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     AuthModule,
     AdminModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

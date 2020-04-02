@@ -9,9 +9,10 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 body {
-  background-color: #f4f3f3;
+  background-color: #FFFFF0;
   margin: 0;
   app-root * {
     font-family: 'Exo', sans-serif;
   }
+  min-height:100%;
 }

@@ -1,3 +1,55 @@
-<p>
-  Bienvenue sur le site des gressins !
-</p>
+
+<div  class="welcome-gressin">
+  <img src="../../assets/gressin-logo-no-BG.png" class="responsive">
+  <div  class="slide-down" (click)="toggle(target)">
+    <!-- <a href="#nav"> -->
+      <fa-icon @myInsertRemoveTrigger [icon]="faChevronDown" size="6x" class="icon-down" ></fa-icon>
+    <!-- </a> -->
+  </div>
+  <div @mySlideDownTrigger *ngIf="isShown" class="grid-container" >
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/capitaine_gressin.jpg">
+      <div class="profile-title">
+        CAPITAINE GRESSIN
+      </div>
+      <p class="profile-desc">Le Capitaine de la Gressinerie, celui qui mène les gressins vers leur destin parfois funeste mais toujours avec entrain. Gressin voyageur mais toujours près du coeur. Il murmure à l'oreille du Grand Gressin</p>
+    </div>
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/sombre_gressin.jpg">
+      <div class="profile-title">
+        SOMBRE GRESSIN
+      </div>
+      <p class="profile-desc">Le pilier fondqteur des Gressins. Sans lui la Gressinerie serait éteinte depuis bien longtemps. Maître du Discord, il introduit également le premier animal gressin. Un Gressin Grand et Fort qui utilise les forces de l'ombre pour semer la terreur chez les ennemis de la Gressinerie !</p>
+    </div>
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/el_gressini.jpg">
+      <div class="profile-title">
+        EL GRESSINI
+      </div>
+      <p class="profile-desc">Sournois, artiste et joueur. El Gressini est mystérieux mais dévastateur. Accompagné de la célèbre mascotte, il détourne la vigilance de ses adversaires pour arriver à ses fins. Sa puissance est tellement supérieure qu'il subit une malédiction de type DJ Robot qui lui ajoute 2 secondes de réaction.</p>
+    </div>  
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/benoit_gressin.jpg">
+      <div class="profile-title">
+        BENOIT GRESSIN
+      </div>
+      <p class="profile-desc">La légende. Toujours de bonne humeur mais jamais en bonne santé, Benoit Gressin est celui qui donne la victoire au Gressin. Elu à l'unanimité le plus beau de tous les gressins, il est adoré sans contestation par tous. Attention : Un Benoit Gressin peut en cacher un autre !</p>
+    </div>
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/gressin_vigoureux.jpg">
+      <div class="profile-title">
+        GRESSIN VIGOUREUX
+      </div>
+      <p class="profile-desc">Propriétaire du célèbre Gressinoire. Seul membre restant à s'entrainer sur le jeu fétiche de la Gressinerie. Le Gressin vigoureux ne manque pas d'énergie pour donner de la joie à tous les gressins ! Gressin sociable, mais ne vous laissez pas tromper ! Derrière ces apparences se cache un gressin destructeur.</p>
+    </div>
+    <div class="grid-item">
+      <img class="img-profile" src="../../assets/gressin_sucre.jpg">
+      <div class="profile-title">
+        GRESSIN SUCRÉ
+      </div>
+      <p class="profile-desc">Nouveau membre de la Gressinerie, il lui donne une nouvelle vie et étend le territoire des gressins en proposant de nouveaux jeux. Le Gressin sucré est modeste mais c'est un gressin à très fort potentiel. Certains disent que son enrobage sucré lui donne des pouvoirs exceptionnels !</p>
+    </div>
+  </div>
+  <div *ngIf="!isShown" style="height: 600px;"></div>
+  <p #target></p>
+</div>
